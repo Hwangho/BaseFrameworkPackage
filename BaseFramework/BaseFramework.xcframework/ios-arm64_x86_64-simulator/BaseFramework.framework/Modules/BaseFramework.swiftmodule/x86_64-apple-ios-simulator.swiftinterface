@@ -1,0 +1,70 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-module-flags: -target x86_64-apple-ios15.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name BaseFramework
+@_exported import BaseFramework
+import Swift
+import UIKit
+import _Concurrency
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class BaseCollectionViewCell : UIKit.UICollectionViewCell {
+  @objc override dynamic open func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) open func setupLayout()
+  @_Concurrency.MainActor(unsafe) open func setDesign()
+  @_Concurrency.MainActor(unsafe) open func setupAttributes()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class BaseTableViewCell : UIKit.UITableViewCell {
+  @objc override dynamic open func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) open func setupLayout()
+  @_Concurrency.MainActor(unsafe) open func setDesign()
+  @_Concurrency.MainActor(unsafe) open func setupAttributes()
+  @available(iOS 3.0, *)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(style: UIKit.UITableViewCell.CellStyle, reuseIdentifier: Swift.String?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension UIKit.UIViewController {
+  public enum TransitionStyle {
+    case present
+    case push
+    public static func == (a: UIKit.UIViewController.TransitionStyle, b: UIKit.UIViewController.TransitionStyle) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @_Concurrency.MainActor(unsafe) public func PresentViewController<T>(viewController vc: T, transition: UIKit.UIViewController.TransitionStyle, complitionHandler: @escaping (UIKit.UIViewController) -> ())
+  @_Concurrency.MainActor(unsafe) public func PresentViewController<T>(storyBoardName sbName: Swift.String, viewController vc: T.Type, transition: UIKit.UIViewController.TransitionStyle, complitionHandler: @escaping () -> ()) where T : UIKit.UIViewController
+}
+extension UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public func showSesacAlert(title: Swift.String, message: Swift.String, buttonTitle: Swift.String, buttonAction: @escaping (UIKit.UIAlertAction) -> Swift.Void)
+}
+public protocol ReusableViewProtocol {
+  static var reuseIdentifier: Swift.String { get }
+}
+extension UIKit.UIViewController : BaseFramework.ReusableViewProtocol {
+  @_Concurrency.MainActor(unsafe) public static var reuseIdentifier: Swift.String {
+    get
+  }
+}
+extension UIKit.UICollectionViewCell : BaseFramework.ReusableViewProtocol {
+  @_Concurrency.MainActor(unsafe) public static var reuseIdentifier: Swift.String {
+    get
+  }
+}
+extension UIKit.UITableViewCell : BaseFramework.ReusableViewProtocol {
+  @_Concurrency.MainActor(unsafe) public static var reuseIdentifier: Swift.String {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) open class BaseViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) open func setupLayout()
+  @_Concurrency.MainActor(unsafe) open func setupAttributes()
+  @_Concurrency.MainActor(unsafe) open func setData()
+}
+extension UIKit.UIViewController.TransitionStyle : Swift.Equatable {}
+extension UIKit.UIViewController.TransitionStyle : Swift.Hashable {}
